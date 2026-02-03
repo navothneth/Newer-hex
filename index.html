@@ -1,0 +1,198 @@
+#d31212<!DOCTYPE html>
+<html lang="si">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>NEWER HEX | ULTIMATE GAMING DOMINATION</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Rajdhani:wght@600;700&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #ff4500;
+            --neon: #00f2ff;
+            --toxic: #39ff14;
+            --dark-bg: #000000;
+            --glass: rgba(255, 255, 255, 0.07);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; cursor: crosshair; }
+        body { background: var(--dark-bg); color: #fff; font-family: 'Poppins', sans-serif; overflow-x: hidden; scroll-behavior: smooth; }
+
+        /* --- HYPER ANIMATED BACKGROUND --- */
+        .video-bg { position: fixed; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; filter: brightness(0.15) contrast(1.2); }
+        .moving-blobs { position: fixed; inset: 0; z-index: -1; filter: blur(80px); opacity: 0.4; }
+        .blob { position: absolute; width: 300px; height: 300px; background: var(--primary); border-radius: 50%; animation: move 20s infinite alternate; }
+        .blob2 { background: var(--neon); left: 50%; animation-duration: 15s; }
+        @keyframes move { from { transform: translate(-10%, -10%); } to { transform: translate(120%, 120%); } }
+
+        /* --- TOP NAVIGATION (LARGER FONT) --- */
+        header {
+            position: fixed; top: 0; width: 100%; padding: 25px 5%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent);
+            display: flex; justify-content: space-between; align-items: center; z-index: 1000;
+            backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255, 69, 0, 0.2);
+        }
+        .logo { font-family: 'Orbitron'; font-size: 28px; color: var(--primary); font-weight: 900; text-shadow: 0 0 15px var(--primary); }
+        .nav-links { display: flex; gap: 30px; }
+        .nav-link { 
+            color: #fff; text-decoration: none; font-family: 'Orbitron'; 
+            font-size: 18px; /* ලොකු අකුරු */
+            font-weight: 700; text-transform: uppercase; transition: 0.3s;
+        }
+        .nav-link:hover { color: var(--neon); transform: translateY(-3px); text-shadow: 0 0 10px var(--neon); }
+
+        /* --- HERO SECTION WITH GLITCH --- */
+        .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px; }
+        .main-title {
+            font-family: 'Orbitron'; font-size: clamp(50px, 15vw, 120px); font-weight: 900;
+            background: linear-gradient(to right, #fff, var(--primary), var(--neon));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            animation: hue-rotate 5s infinite linear;
+        }
+        @keyframes hue-rotate { from { filter: hue-rotate(0deg); } to { filter: hue-rotate(360deg); } }
+
+        /* --- ROADMAP SECTION --- */
+        .section { padding: 100px 5%; max-width: 1200px; margin: auto; }
+        .section-title { font-family: 'Orbitron'; font-size: 35px; color: var(--primary); text-align: center; margin-bottom: 50px; text-transform: uppercase; }
+
+        .roadmap-container { border-left: 2px solid var(--primary); padding-left: 30px; margin-left: 20px; }
+        .roadmap-item { margin-bottom: 40px; position: relative; animation: slideIn 1s ease-out; }
+        .roadmap-item::before { content: ''; position: absolute; left: -41px; top: 0; width: 20px; height: 20px; background: var(--primary); border-radius: 50%; box-shadow: 0 0 15px var(--primary); }
+        .roadmap-item h4 { color: var(--neon); font-family: 'Orbitron'; }
+
+        /* --- GRID CARDS (3D) --- */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .card {
+            background: var(--glass); padding: 40px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1);
+            transition: 0.5s; backdrop-filter: blur(15px); position: relative; overflow: hidden;
+        }
+        .card:hover { transform: scale(1.05) rotateZ(1deg); border-color: var(--primary); box-shadow: 0 0 40px rgba(255, 69, 0, 0.2); }
+        .card::after { content: ''; position: absolute; top: -100%; left: -100%; width: 200%; height: 200%; background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent); transition: 0.5s; }
+        .card:hover::after { top: 100%; left: 100%; }
+
+        /* --- SYSTEM STATUS (LIVE) --- */
+        .status-bar { background: rgba(0,0,0,0.8); padding: 20px; border-radius: 50px; display: flex; justify-content: space-around; margin-top: 50px; border: 1px solid var(--toxic); }
+        .status-node { display: flex; align-items: center; gap: 10px; font-family: 'Orbitron'; font-size: 14px; }
+        .dot { width: 10px; height: 10px; background: var(--toxic); border-radius: 50%; box-shadow: 0 0 10px var(--toxic); animation: blink 1s infinite; }
+        @keyframes blink { 50% { opacity: 0.3; } }
+
+        /* --- MODAL HUD --- */
+        .modal { position: fixed; inset: 0; background: rgba(0,0,0,0.98); display: none; z-index: 2000; align-items: center; justify-content: center; backdrop-filter: blur(20px); }
+        .hud-box { width: 95%; max-width: 450px; background: #080808; border: 2px solid var(--primary); border-radius: 30px; padding: 40px; box-shadow: 0 0 80px var(--primary); }
+        
+        .btn-action {
+            width: 100%; padding: 20px; background: var(--primary); color: #000; border: none; font-family: 'Orbitron'; 
+            font-weight: 900; border-radius: 10px; cursor: pointer; margin-top: 20px; transition: 0.3s;
+        }
+        .btn-action:hover { background: #fff; box-shadow: 0 0 30px #fff; }
+
+        /* --- SWITCHES --- */
+        .row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; font-weight: bold; letter-spacing: 1px; }
+        .switch { position: relative; width: 60px; height: 30px; }
+        .switch input { display: none; }
+        .slider { position: absolute; inset: 0; background: #222; border-radius: 50px; transition: 0.4s; border: 1px solid #444; }
+        .slider:before { content: ""; position: absolute; height: 22px; width: 22px; left: 4px; bottom: 3px; background: #fff; border-radius: 50%; transition: 0.4s; }
+        input:checked + .slider { background: var(--primary); }
+        input:checked + .slider:before { transform: translateX(30px); }
+
+    </style>
+</head>
+
+<body>
+
+    <video autoplay muted loop playsinline class="video-bg">
+        <source src="https://assets.mixkit.co/videos/preview/mixkit-fire-frame-in-a-dark-room-4152-large.mp4" type="video/mp4">
+    </video>
+
+    <div class="moving-blobs">
+        <div class="blob"></div>
+        <div class="blob blob2"></div>
+    </div>
+
+    <header>
+        <div class="logo">N-HEX</div>
+        <nav class="nav-links">
+            <a href="#home" class="nav-link">Home</a>
+            <a href="#roadmap" class="nav-link">Roadmap</a>
+            <a href="#" class="nav-link" onclick="openHUD()" style="color:var(--primary)">Menu</a>
+            <a href="https://wa.me/94768439647" class="nav-link" style="color:var(--toxic)">Buy</a>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <h1 class="main-title">NEWER HEX</h1>
+        <p style="font-family: Orbitron; letter-spacing: 10px; color: var(--neon); margin: 20px 0;">ELITE GAMING PROTOCOL</p>
+        <button class="btn-action" style="width: auto; padding: 20px 60px;" onclick="location.href='https://wa.me/94768439647'">Buy Now Newer Hex Panel</button>
+        
+        <div class="status-bar" style="width: 100%; max-width: 800px;">
+            <div class="status-node"><div class="dot"></div> SERVER: ONLINE</div>
+            <div class="status-node"><div class="dot"></div> BYPASS: ACTIVE</div>
+            <div class="status-node"><div class="dot" style="background:var(--neon); box-shadow: 0 0 10px var(--neon);"></div> USERS: 2,450+</div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">Why Newer Hex?</h2>
+        <div class="grid">
+            <div class="card">
+                <h3 style="color: var(--primary); font-family: Orbitron;">ULTRA FAST</h3>
+                <p>Zero lag performance with optimized kernel-level coding.</p>
+            </div>
+            <div class="card">
+                <h3 style="color: var(--neon); font-family: Orbitron;">UNTRACEABLE</h3>
+                <p>Advanced ghost algorithms to keep you hidden from anti-cheats.</p>
+            </div>
+            <div class="card">
+                <h3 style="color: var(--toxic); font-family: Orbitron;">24/7 SUPPORT</h3>
+                <p>Our experts are always online to help you with setup.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="roadmap">
+        <h2 class="section-title">The Roadmap</h2>
+        <div class="roadmap-container">
+            <div class="roadmap-item">
+                <h4>PHASE 1: THE BEGINNING</h4>
+                <p>Launch of Newer Hex V1 with Basic Aim & ESP Features.</p>
+            </div>
+            <div class="roadmap-item">
+                <h4>PHASE 2: GHOST UPDATE</h4>
+                <p>Introduction of the untraceable Bypass Engine V4.0.</p>
+            </div>
+            <div class="roadmap-item">
+                <h4>PHASE 3: GLOBAL DOMINATION</h4>
+                <p>Adding Speed hacks, Fly mode, and 100% security for Main IDs.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="modal" id="hudModal">
+        <div class="hud-box">
+            <h2 style="font-family: Orbitron; color: var(--primary); text-align: center; margin-bottom: 30px;">INTERNAL MENU</h2>
+            <div class="row"><span>AIMBOT LOCK</span><label class="switch"><input type="checkbox" checked><span class="slider"></span></label></div>
+            <div class="row"><span>AUTO HEADSHOT</span><label class="switch"><input type="checkbox" checked><span class="slider"></span></label></div>
+            <div class="row"><span>ESP LINE</span><label class="switch"><input type="checkbox"><span class="slider"></span></label></div>
+            <div class="row"><span>ANTI-BAN V4</span><label class="switch"><input type="checkbox" checked><span class="slider"></span></label></div>
+            <button class="btn-action" onclick="window.location.href='freefire://'">LAUNCH ENGINE</button>
+            <button class="btn-action" style="background:#222; color:#555;" onclick="closeHUD()">BACK TO TERMINAL</button>
+        </div>
+    </div>
+
+    <footer style="padding: 60px; text-align: center; border-top: 1px solid #111;">
+        <p style="font-family: Orbitron; color: #444; letter-spacing: 5px;">NEWER HEX | BUILT FOR THE BEST</p>
+        <p style="font-size: 10px; color: #222; margin-top: 10px;">Developed by Naviya Live (16) - 2026 Edition</p>
+    </footer>
+
+    <script>
+        function openHUD() { document.getElementById('hudModal').style.display = 'flex'; }
+        function closeHUD() { document.getElementById('hudModal').style.display = 'none'; }
+        
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('hudModal')) { closeHUD(); }
+        }
+    </script>
+
+</body>
+</html>
